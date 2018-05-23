@@ -15,8 +15,7 @@ import java.util.Locale;
 
     public class Weather {
 
-        private static final String OPEN_WEATHER_MAP_URL =
-                "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=metric";
+        private static final String OPEN_WEATHER_MAP_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?zip=54703";
 
         private static final String OPEN_WEATHER_MAP_L_AND_L = "http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=7";
         //You Will need to StringSplice the Lat and Long for the above String.
@@ -57,6 +56,7 @@ import java.util.Locale;
             protected void onPostExecute(JSONObject json) {
                 try {
                     if(json != null){
+                        System.out.println("The Json is : " + json);
                         JSONObject details = json.getJSONArray("weather").getJSONObject(0);
                         System.out.println("The weather is..:" + details);
                         JSONObject main = json.getJSONObject("main");
