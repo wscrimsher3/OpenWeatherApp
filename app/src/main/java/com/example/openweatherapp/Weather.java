@@ -18,8 +18,10 @@ import java.util.Locale;
         private static final String OPEN_WEATHER_MAP_URL =
                 "http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&units=metric";
 
+        private static final String OPEN_WEATHER_MAP_L_AND_L = "http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=7";
+        //You Will need to StringSplice the Lat and Long for the above String.
+
         private static final String OPEN_WEATHER_MAP_API = "9c77026c7e309404f3f70034e652ab04";
-        // Insert your Weather API Here
 
         public interface AsyncResponse {
 
@@ -56,7 +58,9 @@ import java.util.Locale;
                 try {
                     if(json != null){
                         JSONObject details = json.getJSONArray("weather").getJSONObject(0);
+                        System.out.println("The weather is..:" + details);
                         JSONObject main = json.getJSONObject("main");
+                        System.out.println("The main is..:" + main); //This contains min and max temp for the day
                         DateFormat df = DateFormat.getDateTimeInstance();
 
 
@@ -66,7 +70,8 @@ import java.util.Locale;
                         //String Magic to Convert Temperature
                         Double originalTemp = main.getDouble("temp");
                         originalTemp = (originalTemp.doubleValue()*9/5)+32;
-                        String temperature = String.format("%.2f", originalTemp)+ "°";
+
+                        String temperature = String.format("%.2f", originalTemp)+ "°F";
 
                         String humidity = main.getString("humidity") + "%";
                         String pressure = main.getString("pressure") + " hPa";

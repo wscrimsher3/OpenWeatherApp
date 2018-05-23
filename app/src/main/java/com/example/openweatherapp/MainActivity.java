@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, updatedField;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         cityField = (TextView)findViewById(R.id.city_field);
